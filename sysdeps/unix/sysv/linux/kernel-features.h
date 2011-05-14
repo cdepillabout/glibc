@@ -463,7 +463,7 @@
 
 /* Support for private futexes was added in 2.6.22.  */
 #if __LINUX_KERNEL_VERSION >= 0x020616
-# define __ASSUME_PRIVATE_FUTEX	1
+//# define __ASSUME_PRIVATE_FUTEX	1
 #endif
 
 /* Support for fallocate was added in 2.6.23, on s390
