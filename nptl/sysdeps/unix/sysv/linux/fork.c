@@ -59,6 +59,8 @@ __libc_fork (void)
     struct used_handler *next;
   } *allp = NULL;
 
+  printf("In libc, forking...\n");
+
   /* Run all the registered preparation handlers.  In reverse order.
      While doing this we build up a list of all the entries.  */
   struct fork_handler *runp;
