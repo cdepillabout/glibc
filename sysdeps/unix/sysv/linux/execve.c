@@ -32,11 +32,16 @@ __execve (file, argv, envp)
 {
 #if __BOUNDED_POINTERS__
   {
-    char *const *v;
+    char *const *v, *j;
     int i;
     char *__unbounded *__unbounded ubp_argv;
     char *__unbounded *__unbounded ubp_envp;
     char *__unbounded *__unbounded ubp_v;
+
+    printf("/* In glibc, doing execve, file is %s, args: ", file);
+    for(j = argv; j*; j++)
+      printf("%s ", j);
+    printf("*/\n");
 
     for (v = argv; *v; v++)
       ;
@@ -57,6 +62,7 @@ __execve (file, argv, envp)
     return INLINE_SYSCALL (execve, 3, CHECK_STRING (file), ubp_argv, ubp_envp);
   }
 #else
+  printf("/* In glibc, doing execve, file is %s */\n", file);
   return INLINE_SYSCALL (execve, 3, file, argv, envp);
 #endif
 }
